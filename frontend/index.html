@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capstone Visitor Counter</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 100px; }
+        h1 { font-size: 48px; color: #2f8a6f; }
+    </style>
+</head>
+<body>
+    <h1>You are visitor #<span id="count">...</span></h1>
+    <script>
+        fetch('/api/visit', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('count').innerText = data.count;
+            });
+    </script>
+</body>
+</html>
