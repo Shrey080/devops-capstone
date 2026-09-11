@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: capstone-backend
+  template:
+    metadata:
+      labels:
+        app: capstone-backend
+    spec:
+      containers:
+      - name: backend
+        image: 892667433222.dkr.ecr.ap-south-1.amazonaws.com/capstone-backend:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REDIS_HOST
+          value: "capstone-redis.bvejxj.0001.aps1.cache.amazonaws.com"
